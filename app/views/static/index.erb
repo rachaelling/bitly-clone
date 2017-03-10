@@ -1,2 +1,30 @@
-<h1>Hello World</h1>
-<p>See Me in views/static/index.html.erb</p>
+<h1>UrURL</h1>
+<h2>Simplify your Life, Simplify UrUrl(s)</h2>
+
+<form action="/urls" method="post">
+    Paste a URL to shorten it:
+    <input type="text" name="long_url">
+    <input type="submit" value="Submit">
+ </form>
+
+
+<div class="alert-danger">
+  <p><%= @error if @error %></p>
+</div>
+
+<table class="table">
+  <tr>
+    <th>Long url</th>
+    <th>Short url</th>
+    <th>Click count</th>
+  </tr>
+
+
+  <% @urls.each do |x| %>
+    <tr>
+      <td><%= x.long_url%></td>
+      <td><a href = "/<%=x.short_url%>" > <%=x.short_url%> </a></td>
+     <td><%= x.click_count%></td>
+   </tr>
+  <% end %>
+</table>
